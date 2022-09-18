@@ -1,0 +1,91 @@
+body
+{
+    font-family: 'sans-serif';
+    font-size: 15px;
+}
+Row{
+ width: 100%;
+
+}
+.Header{
+
+  background-color: rgb(86, 143, 247);
+  line-height:15px ;
+
+}
+span{
+  color: red;
+  font-weight: bold;
+  font-family: 'sans-serif';
+}
+.content{
+ border-right:3px solid white;
+ color:white
+}
+.content:last-child{
+  border-right:none ;
+}
+.subcontent{
+  color: blue;
+  font-weight:bold ;
+}
+
+p{
+  color:red;
+  padding-left: 50px;
+  font-weight: bold;
+  font-size: 12.5px;
+
+}
+
+img{
+  width: 10px;
+}
+
+
+.circle-icon {
+  background: rgb(10, 74, 142);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+ padding: 5px;
+ margin: 0px;
+  vertical-align: middle;
+  color: azure;
+}
+
+.invoice{
+   background-color: rgb(220, 230, 233);
+   position: relative;
+   height: 300px;
+   width: 200px;
+   margin-left: 0px;
+  
+}
+.invoice1{
+  position: absolute;
+}
+
+.footer{
+  border-top:1px solid rgb(62, 59, 59);
+  margin-top: 300px;
+  margin-bottom: 6px;
+  padding-top: 10px;
+}
+@media (max-width:789px) {
+  .content{
+    border: none;
+  }
+  .invoice{
+    margin-top: 8px;
+    margin-left: 20px;
+  }
+.footer{
+  margin-bottom: 8px;
+}
+  
+}
+.form{
+    padding: 3px;
+}
