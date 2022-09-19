@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom';
-
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -35,11 +34,11 @@ function Home(){
         <Navbar key={expand} bg="primary" expand={expand} className="mb-3" >
           <Container fluid>
             <Navbar.Brand href="#"><RiHeartsFill color='red' size="20px"/><span>ECGST</span></Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} style={ { color:"white"} } />
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} variant="success" style={ { backgroundColor:"white",color:"red" } } />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end" 
+              placement="end" bg="red"
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
@@ -49,7 +48,7 @@ function Home(){
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="#action1" className="content"><BsFillBellFill color='black' size="50px"/></Nav.Link>
             <Nav.Link href="#action2" className="content"><BsFillHouseDoorFill color='black' size="50px"/></Nav.Link>
-            <Nav.Link href="#action1" className="content"> <Button variant="outline-success" onClick={navigateLogin} >LogOut</Button></Nav.Link>
+            <Nav.Link href="#action1" className="content"> <Button variant="success" onClick={navigateLogin} >LogOut</Button></Nav.Link>
             </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -60,48 +59,41 @@ function Home(){
     <Container className="pt-3 ">
     <Row className="pl-10 subcontent" >
         <Col s={1}>CREATE</Col>
-        <Col s={1}>INVOICES</Col>
+        <Col s={1} >
+         <NavDropdown title="INVOICE" id="basic-nav-dropdown" >
+              <NavDropdown.Item href="#action/3.1"> <AiOutlineFileText className='circle-icon' /><p>Sales<br/>Invoice</p></NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+              <AiFillFileText className='circle-icon' /><p>Delivery<br/>Chellan</p>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3"><AiFillCreditCard className='circle-icon' /><p>Credit<br/>Notes(Sales <br/> Return)</p></NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">
+              < FaFilePowerpoint className='circle-icon' /><p >Purchase<br/>Invoice</p>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.5">
+              <AiOutlineCreditCard className='circle-icon' /><p>Debit<br/>Note(Purchase<br/>Return)</p>
+              </NavDropdown.Item>
+            </NavDropdown></Col>
         <Col s={1}>ESTIMATES</Col>
         <Col s={1}>INCOME</Col>
         <Col s={1}>VOUCHERS</Col>
         <Col s={1}>CASH/BANK</Col>
         <Col s={1}>PAYROLL</Col>
         <Col s={1}>REPORT</Col>
+        <Col s={1} className="subcontent">FINALAC</Col>
       </Row>
-     <Row className="pt-3">
-     <Col sm={1} className="subcontent">FINALAC</Col>
-     <Col sm={1} className="ms-4 invoice">
-          <Nav className="flex-column   invoice2">
-            <Nav.Item>
-            <Nav.Link eventKey="second"><AiOutlineFileText className='circle-icon' /><p className='d-flex invoice1'>Sales<br/>Invoice</p></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="second" ><AiFillFileText className='circle-icon' /><p className='d-flex invoice1'>Delivery<br/>Chellan</p></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="first"><AiFillCreditCard className='circle-icon' /><p className='d-flex invoice1'>Credit<br/>Notes(Sales Return)</p></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="second">< FaFilePowerpoint className='circle-icon' /><p className='d-flex invoice1'>Purchase<br/>Invoice</p></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="first"><AiOutlineCreditCard className='circle-icon' /><p className='d-flex invoice1 '>Debit<br/>Note(Purchase Return)</p></Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Col>
-     </Row>
      
     </Container>
     <Container fluid  className="footer">
-    <Row className="text-center">
-        <Col sm={2}><p style={ {color:"black"} }>©2022 ECGST</p></Col>
-        <Col sm={8}></Col>
-        <Col sm={2}>developed by <RiHeartsFill color='red' /><span>EC</span><span style={ {color:"blue"}}>File</span></Col>
+    <Row>
+        <Col sm={3}><h6 style={ {color:"black"} }>©2022 ECGST</h6></Col>
+        <Col sm={7}></Col>
+        <Col sm={2}><h6>developed by <RiHeartsFill color='red' /><span>EC</span><span style={ {color:"blue"}}>File</span></h6></Col>
       </Row>
       </Container>
     
       
 </>
+
    
 )}
 export default Home

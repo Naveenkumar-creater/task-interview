@@ -97,10 +97,10 @@ function Register(props){
         </Button>
     </Form>
     <Container fluid  className="footer">
-    <Row className="text-center">
-        <Col sm={2}><p style={ {color:"black"} }>©2022 ECGST</p></Col>
-        <Col sm={8}></Col>
-        <Col sm={2}>developed by <RiHeartsFill color='red' /><span>EC</span><span style={ {color:"blue"}}>File</span></Col>
+    <Row>
+        <Col sm={3}><h6 style={ {color:"black"} }>©2022 ECGST</h6></Col>
+        <Col sm={7}></Col>
+        <Col sm={2}><h6>developed by <RiHeartsFill color='red' /><span>EC</span><span style={ {color:"blue"}}>File</span></h6></Col>
       </Row>
       </Container>
     </>  
