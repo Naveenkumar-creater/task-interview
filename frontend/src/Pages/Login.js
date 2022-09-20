@@ -26,14 +26,14 @@ function Login(props) {
   const handlesubmit = (e)=>{
     e.preventDefault()
     const arr={"email":email,"password":password}
-    axios.post("https://login-logout-apps.herokuapp.com/login",arr).then((res)=>{
-            console.log(res)
-            if(true){
+    axios.post("https://login-logout-log.herokuapp.com/login",arr).then((res)=>{
+            console.log(res.data)
+            if(res.data.status==="ok"){
                 alert("sucessfully Logged in")
                 Navigate("/home")
         }
         else{
-               alert(res) 
+               alert("invalid Email or Password") 
             }
     })
     }
@@ -50,9 +50,9 @@ function Login(props) {
       <h1 className="text-center">Login</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="email" className="myInput" placeholder="Enter email"
-      value={email}
-        onChange={handelChange} />
+        <Form.Control type="email" className="myInput" placeholder="Enter email" 
+      value={email} 
+        onChange={handelChange} required />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -60,9 +60,9 @@ function Login(props) {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password"
+        <Form.Control type="password" placeholder="Password" 
         value={password}
-        onChange={handelChange1} />
+        onChange={handelChange1} required />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />

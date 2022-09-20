@@ -1,6 +1,10 @@
-.footer{
-   
-}
+
+@media (max-width:789px) {
+    .footer{
+      text-align: center;
+      padding-right: 40px;
+    }
+    }
 h6{
     margin-top: 8px;
 }

@@ -12,12 +12,13 @@ import Row from 'react-bootstrap/Row';
 import {RiHeartsFill} from "react-icons/ri";
 import "./register.css"
 
+
 function Register(props){
   let Navigate = useNavigate()
   const [username, setusername] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const[password,setpassword]=useState("");
-  const[confrim_password,setconfrim_password]=useState("");
   //Nawe
   const handelChange = (e)=>{
     setusername(e.target.value)
@@ -26,26 +27,28 @@ function Register(props){
   const handelChange1 = (e)=>{
     setEmail(e.target.value)
   }
+  const handelChange2 = (e)=>{
+    const onlyDigit=e.target.value.replace(/\D/g,"");
+    setPhone(onlyDigit)
+  }
   //date
   //
   const handelChange5 = (e)=>{
     setpassword(e.target.value)
   }
-   const handelChange6 = (e)=>{
-    setconfrim_password(e.target.value)
-  }
+  
 
    const handleSubmit = async(e)=>{
     e.preventDefault()
-    const arr = {"name":username,"email":email,"password":password,"confrim_password":confrim_password}
-     axios.post("https://login-logout-apps.herokuapp.com/register",arr).then((res)=>{
-          console.log(res)
-            if(true){
+    const arr = {"name":username,"email":email,"password":password,"phone":phone}
+     axios.post("https://login-logout-log.herokuapp.com/register",arr).then((res)=>{
+          
+     if(!(Object.keys(res.data)).includes("code")){
                 alert("sucessfully registered")
                 Navigate("/")
             }
             else{
-               alert(res["data"]) 
+               alert(`${Object.keys(res.data.keyValue)} it already used`) 
             }
         })
   }
@@ -64,14 +67,21 @@ function Register(props){
         <Form.Label>Uername</Form.Label>
         <Form.Control type="text" placeholder="Enter username"
         value={username}
-        onChange={handelChange}/>
+        onChange={handelChange} required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
         <Form.Label>Email</Form.Label>
         <Form.Control type="email" placeholder="Enter email"
         value={email}
-        onChange={handelChange1}/>
+        onChange={handelChange1} required/>
+        </Form.Group>
+        
+        <Form.Group className="mb-3" controlId="phone">
+        <Form.Label>Phone No</Form.Label>
+        <Form.Control type="tel"  placeholder="Enter Phone No"
+        value={phone} 
+        onChange={(e)=>handelChange2(e)} required maxLength="10" minLength={10} />
         </Form.Group>
 
     <Form.Group className="mb-3">
@@ -79,14 +89,7 @@ function Register(props){
         <Form.Control type="password" placeholder="Password" 
         onChange={handelChange5}
     name="password"
-    value= {password}/>
-      </Form.Group>
-
-       <Form.Group className="mb-3">
-        <Form.Label> Confrim Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" onChange={handelChange6}
-    name="confrim_password"
-    value= {confrim_password}/>
+    value= {password} required maxLength="20" minLength={8}/>
       </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
